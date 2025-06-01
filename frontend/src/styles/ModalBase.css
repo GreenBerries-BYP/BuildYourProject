@@ -1,0 +1,56 @@
+/* ModalBase.css */
+.modal-overlay-base { /* Renamed to avoid conflicts if original is still used */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content-base {
+    background-color: var(--modal-bg);
+    border: 1px solid var(--gray-light-color);
+    border-radius: 8px;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    width: 77.3rem; /* Common width */
+}
+
+.modal-header-base {
+    /* Using --modal-header-bg as it's defined in Main.css for dark mode too */
+    background-color: var(--modal-header-bg); 
+    border-radius: 8px 8px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem; /* Base padding from ModalNewProject */
+}
+
+.modal-header-base h2 { /* Base h2 styling */
+    margin: 0;
+    font-size: 2.2rem; /* Base font size */
+    font-weight: 500; /* Base font weight */
+    color: var(--black-color);
+}
+
+.modal-close-btn-base {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem; /* Base padding */
+    color: var(--black-color); /* Base color */
+}
+
+.modal-body-base {
+    padding: 2rem;
+    flex-grow: 1; /* from ModalNewProject, more general than flex: 1 */
+    display: flex; /* from ModalNewProject */
+    flex-direction: column; /* from ModalNewProject */
+}

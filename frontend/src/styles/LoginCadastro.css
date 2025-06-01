@@ -49,54 +49,6 @@ label {
   margin-right: 10px;
 }
 
-.btn-acesso-verde,
-.link-cadastre, .btn-acesso-roxo {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 22rem;
-  height: 5rem;
-  text-align: center;
-  font-size: 2rem;
-  padding: 0.7rem 1.2rem;
-  border-radius: 30px;
-  transition: all 200ms ease-in-out;
-}
-
-.btn-acesso-verde {
-  color: var(--white-color);
-  background: var(--btn-green);
-  border: none;
-}
-
-.btn-acesso-verde:hover {
-  transform: scale(1.05);
-  background-color: var(--green-dark-color);
-}
-
-.btn-acesso-roxo {
-  color: var(--white-color);
-  background: var(--btn-purple);
-  border: none;
-}
-
-.btn-acesso-roxo:hover {
-  transform: scale(1.05);
-  background-color: var(--purple-dark-color);
-}
-
-.link-cadastre {
-  color: var(--green-dark-color);
-  border: 2px solid var(--green-dark-color);
-  background-color: transparent;
-}
-
-.link-cadastre:hover {
-  background: var(--btn-green);
-  color: var(--white-color);
-  transform: scale(1.05);
-}
-
 .check-label {
   font-size: 1.9rem;
 }

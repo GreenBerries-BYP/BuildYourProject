@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import "../styles/ModalBase.css";
 import "../styles/ModalNewTask.css";
 import { getToken } from "../auth/auth";
 import { useTranslation } from "react-i18next";
@@ -81,13 +82,13 @@ const ModalNovaTarefa = ({ isOpen, onClose, projetoId }) => {
     if (!isOpen) return null;
 
     return (
-        <div className="modal-overlay">
-            <div className="modal-content" ref={modalRef}>
-                <div className="modal-header">
+        <div className="modal-overlay-base">
+            <div className="modal-content-base modal-content-new-task" ref={modalRef}>
+                <div className="modal-header-base modal-header-new-task">
                     <h2>{t("titles.newTask", "New Task")}</h2>
-                    <button className="close-btn" onClick={onClose}>×</button>
+                    <button className="modal-close-btn-base close-btn-new-task" onClick={onClose}>×</button>
                 </div>
-                <div className="modal-body">
+                <div className="modal-body-base modal-body-new-task">
                     <form onSubmit={handleSubmit} noValidate>
                         <div className="input-group">
                             <input

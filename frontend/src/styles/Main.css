@@ -7,7 +7,8 @@
   --gray-color: #4e4e4e;
   --gray-light-color: #d0d0d0;
   --form-bg: rgba(255, 255, 255, 0.15);
-  --on-page-link: rgba(91, 69, 132, 0.36);
+  --purple-saturated-color-rgb: 91, 69, 132;
+  --on-page-link: rgba(var(--purple-saturated-color-rgb), 0.36);
 
   /* Roxo */
   --purple-color: #8474a1;
@@ -77,12 +78,8 @@ body.dark-theme {
   --gray-color: #a0a0a0;
   --gray-light-color: #444c56;
   --form-bg: #22272e;
-  --on-page-link: rgba(
-    174,
-    140,
-    235,
-    0.36
-  ); /* Um roxo mais claro para dark-theme */
+  --purple-light-color-dark-theme-rgb: 174, 140, 235; /* Corresponds to #AE8CEB, which is --purple-light-color in dark theme */
+  --on-page-link: rgba(var(--purple-light-color-dark-theme-rgb), 0.36); /* Um roxo mais claro para dark-theme */
 
   /* Roxo (Tema Escuro) */
   --purple-color: #7d64ac;

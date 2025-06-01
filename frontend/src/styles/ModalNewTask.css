@@ -1,55 +1,25 @@
-.modal-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.3);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
-}
-
-.modal-content {
-  background-color: var(--modal-bg);
-  border: 1px solid var(--gray-light-color);
-  border-radius: 8px;
-  width: 77.3rem;
+.modal-content-new-task {
   height: 40.3rem;
-  font-family: 'Poppins', sans-serif;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-  display: flex;
-  flex-direction: column;
 }
 
-.modal-header {
-  background-color: var(--purple-light-color);
-  padding: 1rem 2rem;
-  border-radius: 8px 8px 0 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+.modal-header-new-task {
+  background-color: var(--purple-light-color); /* Specific: Overrides base if different */
+  padding: 1rem 2rem; /* Specific: Overrides base */
 }
-
-.modal-header h2 {
+.modal-header-new-task h2 {
   margin-top: 2rem;
   font-size: 2.5rem;
   font-weight: normal;
-  color: var(--white-color);
+  color: var(--white-color); /* Specific: var(--white-color) might be an issue in dark mode if header is light */
 }
 
-.close-btn {
+.close-btn-new-task {
   font-size: 4rem;
-  color: var(--white-color);
-  background: none;
-  border: none;
-  cursor: pointer;
+  color: var(--white-color); /* Specific: var(--white-color) might be an issue in dark mode */
 }
 
-.modal-body {
-  padding: 2rem;
-  flex: 1;
+.modal-body-new-task {
+  flex: 1; /* Specific: Overrides base's flex-grow:1 if behavior is different */
 }
 
 .modal-body form {

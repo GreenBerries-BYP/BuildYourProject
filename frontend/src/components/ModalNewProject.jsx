@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import "../styles/ModalBase.css";
 import "../styles/ModalNewProject.css";
 import api from "../api/api";
 import { useTranslation } from "react-i18next"; // Added
@@ -279,15 +280,15 @@ const ModalNewProject = ({ isOpen, onClose }) => {
     const projectTypes = ["TCC", "Artigo Acadêmico", "ABNT"];
 
     return (
-        <div className="modal-overlay">
-            <div className="modal-content" ref={modalRef}>
-                <div className="modal-header">
+        <div className="modal-overlay-base">
+            <div className="modal-content-base modal-content-new-project" ref={modalRef}>
+                <div className="modal-header-base">
                     <h2>{t("titles.newProject", { defaultValue: "Novo Projeto" })}</h2>
-                    <button className="close-btn" onClick={onClose}>
+                    <button className="modal-close-btn-base close-btn-new-project" onClick={onClose}>
                         ×
                     </button>
                 </div>
-                <div className="modal-body">
+                <div className="modal-body-base">
                     <div className="step-indicator">
                         <div className={`step-item ${currentStep === 1 ? 'active' : ''} ${currentStep > 1 ? 'completed' : ''}`}>
                             <span className="step-number">1</span>

@@ -1,62 +1,13 @@
 /* ModalNewProject.css */
 
-.modal-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-}
-
-.modal-content {
-    background-color: var(--modal-bg);
-    border: 1px solid var(--gray-light-color);
-    border-radius: 8px;
-    width: 77.3rem;
+.modal-content-new-project {
     min-height: 40.3rem;
     max-height: 90vh;
     overflow-y: auto;
-    font-family: 'Poppins', sans-serif;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-    display: flex;
-    flex-direction: column;
 }
 
-.modal-header {
-    background-color: var(--modal-header-bg);
-    padding: 1.5rem 2rem;
-    border-radius: 8px 8px 0 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.modal-header h2 {
-    margin: 0;
-    font-size: 2.2rem;
-    font-weight: 500;
-    color: var(--black-color);
-}
-
-.close-btn {
+.close-btn-new-project {
     font-size: 3rem;
-    color: var(--black-color);
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 0.5rem;
-}
-
-.modal-body {
-    padding: 2rem;
-    flex-grow: 1;
-    display: flex;
-    flex-direction: column;
 }
 
 .modal-body form {
@@ -206,47 +157,6 @@ textarea {
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
-
-/* Estava tentando mexer no calendário, chatgpt fez isso aqui */
-/* Seleciona o texto e Cntl + K + U pra descomentar tudo*/
-/* input[type="date"] {
-    color: var(--black-color); 
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    position: relative;
-    padding-right: 3.5rem; 
-}
-
-input[type="date"]::-webkit-calendar-picker-indicator {
-    display: none;
-    -webkit-appearance: none;
-}
-
-input[type="date"]::-moz-calendar-picker-indicator {
-    display: none;
-    -moz-appearance: none;
-}
-
-input[type="date"]::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    right: 1.2rem;
-    transform: translateY(-50%);
-    width: 2.4rem;
-    height: 2.4rem;
-    pointer-events: none; 
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: contain;
-
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%235b4584" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>');
-}
-
-body.dark-theme input[type="date"]::after {
-    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%23693b99" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>');
-} */
 
 textarea#projectDescription {
     overflow-y: hidden;

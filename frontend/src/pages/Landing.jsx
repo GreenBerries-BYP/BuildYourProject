@@ -1,6 +1,7 @@
 import React from 'react';
 // Removed useState and api imports as they are not used
 import '../styles/Landing.css';
+import '../styles/Buttons.css';
 import { useTranslation } from 'react-i18next';
 
 const Landing = () => {
@@ -27,8 +28,8 @@ const Landing = () => {
             <a href="#sobre">{t("landing.nav.aboutUs", "about us")}</a>
           </div>
           <div className="enter-group">
-            <a className='link-borda-roxo' href="/login">{t("landing.nav.login", "Fazer login")}</a>
-            <a className='link-roxo' href="/register">{t("landing.nav.signUp", "Criar conta")}</a>
+            <a className='btn btn-outline-purple btn-md' href="/login">{t("landing.nav.login", "Fazer login")}</a>
+            <a className='btn btn-primary-purple btn-md' href="/register">{t("landing.nav.signUp", "Criar conta")}</a>
           </div>
         </header> 
 
@@ -40,7 +41,7 @@ const Landing = () => {
             <p className="descricao-inicio">
               {t("landing.hero.subtitle", "Gerencie, colabore e cumpra prazos com tecnologia inteligente.")}
             </p>
-            <a href='/register' className="botao-comecar link-roxo">{t("landing.hero.ctaButton", "Começar agora")}</a>
+            <a href='/register' id="botao-comecar-landing" className="btn btn-primary-purple btn-xl">{t("landing.hero.ctaButton", "Começar agora")}</a>
           </div>
 
           <div className="blocos-inicio">

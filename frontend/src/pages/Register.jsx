@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import api from '../api/api';
 import '../styles/LoginCadastro.css';
+import '../styles/Buttons.css';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
@@ -137,7 +138,7 @@ const Register = () => {
           )}
 
           <div className="row px-5 d-flex justify-content-center text-center">
-            <button className="col btn-acesso-roxo justify-content-center" type="submit" disabled={loading}>
+            <button className="col btn btn-primary-purple btn-lg justify-content-center" type="submit" disabled={loading}>
               {loading ? (
                 <div
                   className="spinner-border text-light"

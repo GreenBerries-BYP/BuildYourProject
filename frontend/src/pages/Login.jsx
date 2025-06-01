@@ -4,6 +4,7 @@ import { saveToken } from '../auth/auth';
 import { useNavigate, Link } from 'react-router-dom';
 
 import '../styles/LoginCadastro.css';
+import '../styles/Buttons.css';
 import { useTranslation } from 'react-i18next';
 
 const Login = () => {
@@ -101,12 +102,12 @@ const Login = () => {
               </div>
 
               <div className="d-flex justify-content-between gap-5">
-                <Link to="/register" className="link-cadastre flex-fill text-center">
+                <Link to="/register" className="btn btn-outline-green btn-lg flex-fill text-center">
                   {t("login.signUpLink", "Sign Up")}
                 </Link>
 
                 <button
-                  className="btn-acesso-verde flex-fill d-flex justify-content-center align-items-center"
+                  className="btn btn-primary-green btn-lg flex-fill d-flex justify-content-center align-items-center"
                   type="submit"
                   disabled={loading}
                 >

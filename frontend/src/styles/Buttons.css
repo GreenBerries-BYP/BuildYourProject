@@ -1,0 +1,80 @@
+/* Buttons.css */
+.btn {
+    display: inline-flex; /* Changed from flex to inline-flex for better composability */
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 30px;
+    transition: all 200ms ease-in-out, transform 0.2s ease;
+    padding: 0.7rem 1.5rem; /* Default padding */
+    font-size: 2rem; /* Default font-size */
+    height: auto; /* Default height, specific sizes will set this */
+    border: 2px solid transparent; /* Base for outline buttons and to reserve space */
+    line-height: 1.5; /* Ensure text is vertically centered for various heights */
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
+/* Color Schemes */
+.btn-primary-purple {
+    background: var(--btn-purple);
+    color: var(--white-color);
+    border-color: transparent; /* Ensure no border from .btn shows */
+}
+.btn-primary-purple:hover {
+    background-color: var(--purple-dark-color);
+    background-image: none; /* Disable gradient on hover if a solid color is preferred */
+}
+
+.btn-outline-purple {
+    background-color: transparent;
+    color: var(--purple-dark-color);
+    border-color: var(--purple-dark-color);
+}
+.btn-outline-purple:hover {
+    background-color: var(--purple-dark-color);
+    color: var(--white-color);
+}
+
+.btn-primary-green {
+    background: var(--btn-green);
+    color: var(--white-color);
+    border-color: transparent;
+}
+.btn-primary-green:hover {
+    background-color: var(--green-dark-color);
+    background-image: none;
+}
+
+.btn-outline-green {
+    background-color: transparent;
+    color: var(--green-dark-color);
+    border-color: var(--green-dark-color);
+}
+.btn-outline-green:hover {
+    background-color: var(--green-dark-color); /* Changed from --btn-green to solid color for consistency */
+    color: var(--white-color);
+}
+
+/* Sizes - can be combined with color schemes */
+.btn-md { /* Corresponds to original .link-borda-roxo / .link-roxo size */
+    height: 4rem;
+    padding: 0.5rem 1.2rem; /* Adjusted padding to match original */
+    /* font-size: 2rem; is default */
+}
+
+.btn-lg { /* Corresponds to original .btn-acesso-verde / .link-cadastre / .btn-acesso-roxo size */
+    height: 5rem;
+    /* padding: 0.7rem 1.2rem; from original, adjust if needed */
+    /* font-size: 2rem; is default */
+}
+
+.btn-xl { /* For .botao-comecar */
+    height: 5.5rem;
+    font-size: 2.4rem;
+    /* padding will use default or can be specified if needed */
+}
