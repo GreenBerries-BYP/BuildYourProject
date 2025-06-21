@@ -1,4 +1,4 @@
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.generics import CreateAPIView
 from rest_framework_simplejwt.views import TokenObtainPairView
@@ -13,6 +13,45 @@ from django.conf import settings
 from django.db import connection
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+
+import os
+from django.shortcuts import redirect, HttpResponse
+from google_auth_oauthlib.flow import Flow
+
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+CLIENT_SECRETS_FILE = os.path.join(BASE_DIR, 'api', 'client_secret.json')
+
+os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'  # permite HTTP inseguro para dev local
+
+def google_calendar_init_view(request):
+    flow = Flow.from_client_secrets_file(
+        CLIENT_SECRETS_FILE,
+        scopes=['https://www.googleapis.com/auth/calendar'],
+        redirect_uri='http://localhost:8000/api/google-calendar/redirect/'
+    )
+    authorization_url, state = flow.authorization_url(
+        access_type='offline',
+        include_granted_scopes='true'
+    )
+    request.session['state'] = state
+    return redirect(authorization_url)
+
+def google_calendar_redirect_view(request):
+    state = request.session.get('state')
+    flow = Flow.from_client_secrets_file(
+        CLIENT_SECRETS_FILE,
+        scopes=['https://www.googleapis.com/auth/calendar'],
+        state=state,
+        redirect_uri='http://localhost:8000/api/google-calendar/redirect/'
+    )
+    authorization_response = request.build_absolute_uri()
+    flow.fetch_token(authorization_response=authorization_response)
+    
+    credentials = flow.credentials
+    # Aqui você pode salvar as credenciais no banco ou sessão
+    
+    return redirect('http://localhost:5173/home/calendario')
+
 
 # Na view a gente faz o tratamento do que a url pede. Depende se for get, post, update.
 # Sempre retorne em JSON pro front conseguir tratar bem

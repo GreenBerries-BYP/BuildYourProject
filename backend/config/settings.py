@@ -24,7 +24,7 @@ SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", "chave-de-desenvolvimento")
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    os.getenv('RENDER_EXTERNAL_HOSTNAME', 'localhost'),
+    "127.0.0.1",
     'localhost',
 ]
 

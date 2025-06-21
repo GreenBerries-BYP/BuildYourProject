@@ -1,12 +1,12 @@
 from django.urls import path
 from .views import RegisterView, LoginView, HomeView, ProjectView, ProjectCollaboratorsView
 
-
-
-# As urls são o que o usuário vai acessar, sempre nesse padrão: 
-# Url que o usuário vai ver, nome da url na view, apelido pra referenciar a url no front
+from . import views
 
 urlpatterns = [
+    path('google-calendar/init/', views.google_calendar_init_view, name='google_calendar_init'),
+    path('google-calendar/redirect/', views.google_calendar_redirect_view, name='google_calendar_redirect'),
+
     path("register/", RegisterView.as_view(), name="register"),
     path("login/", LoginView.as_view(), name="login"),
     path("home/", HomeView.as_view(), name='home'),
