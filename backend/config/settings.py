@@ -113,8 +113,12 @@ USE_TZ = True
 # Arquivos estáticos
 STATIC_URL = 'static/'
 
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+
 # CORS
 CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5173',
+    'http://localhost:8000',
     "https://buildyourproject-front.onrender.com",
 ]
 

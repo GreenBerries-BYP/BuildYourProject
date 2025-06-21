@@ -6,6 +6,8 @@ from . import views
 urlpatterns = [
     path('google-calendar/init/', views.google_calendar_init_view, name='google_calendar_init'),
     path('google-calendar/redirect/', views.google_calendar_redirect_view, name='google_calendar_redirect'),
+    path('google-calendar/is-connected/', views.google_calendar_is_connected, name='google_calendar_is_connected'),
+    path('google-calendar/events/', views.google_calendar_events, name='google_calendar_events'),
 
     path("register/", RegisterView.as_view(), name="register"),
     path("login/", LoginView.as_view(), name="login"),

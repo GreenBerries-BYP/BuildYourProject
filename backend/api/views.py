@@ -1,4 +1,4 @@
-from django.http import JsonResponse, HttpResponse
+from django.http import JsonResponse, HttpResponse, HttpResponseForbidden
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.generics import CreateAPIView
 from rest_framework_simplejwt.views import TokenObtainPairView
@@ -17,11 +17,17 @@ from rest_framework.response import Response
 import os
 from django.shortcuts import redirect, HttpResponse
 from google_auth_oauthlib.flow import Flow
+from django.contrib.auth.decorators import login_required
+from datetime import datetime, timezone
+from google.oauth2.credentials import Credentials
+import json
+from googleapiclient.discovery import build
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 CLIENT_SECRETS_FILE = os.path.join(BASE_DIR, 'api', 'client_secret.json')
 
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'  # permite HTTP inseguro para dev local
+
 
 def google_calendar_init_view(request):
     flow = Flow.from_client_secrets_file(
@@ -31,27 +37,71 @@ def google_calendar_init_view(request):
     )
     authorization_url, state = flow.authorization_url(
         access_type='offline',
-        include_granted_scopes='true'
+        include_granted_scopes='true',
+        prompt='consent'
     )
     request.session['state'] = state
     return redirect(authorization_url)
 
 def google_calendar_redirect_view(request):
     state = request.session.get('state')
+
+    if not state:
+        return HttpResponseForbidden('Missing OAuth state in session.')
+
     flow = Flow.from_client_secrets_file(
         CLIENT_SECRETS_FILE,
         scopes=['https://www.googleapis.com/auth/calendar'],
         state=state,
         redirect_uri='http://localhost:8000/api/google-calendar/redirect/'
     )
+
     authorization_response = request.build_absolute_uri()
     flow.fetch_token(authorization_response=authorization_response)
-    
+
     credentials = flow.credentials
-    # Aqui você pode salvar as credenciais no banco ou sessão
-    
+
+    request.session['google_token'] = {
+        'token': credentials.token,
+        'refresh_token': credentials.refresh_token,
+        'token_uri': credentials.token_uri, #type:ignore
+        'client_id': credentials.client_id,
+        'client_secret': credentials.client_secret,
+        'scopes': credentials.scopes
+    }
+
     return redirect('http://localhost:5173/home/calendario')
 
+
+def google_calendar_is_connected(request):
+    # Aqui você deve verificar se o token está salvo para o usuário (na sessão, banco ou cache)
+    token = request.session.get('google_token')
+    connected = token is not None
+    return JsonResponse({'connected': connected})
+
+
+
+def google_calendar_events(request):
+    token_json = request.session.get('google_token')
+    if not token_json:
+        return HttpResponseForbidden('Usuário não conectado ao Google Calendar')
+
+    # Aqui sim, faz o loads pois token_json é string
+    token_info = json.loads(token_json)
+
+    creds = Credentials.from_authorized_user_info(token_info)
+
+    service = build('calendar', 'v3', credentials=creds)
+
+    now = datetime.now(timezone.utc).isoformat()
+    events_result = service.events().list(
+        calendarId='primary', timeMin=now,
+        maxResults=10, singleEvents=True,
+        orderBy='startTime'
+    ).execute()
+    events = events_result.get('items', [])
+
+    return JsonResponse({'items': events})
 
 # Na view a gente faz o tratamento do que a url pede. Depende se for get, post, update.
 # Sempre retorne em JSON pro front conseguir tratar bem
